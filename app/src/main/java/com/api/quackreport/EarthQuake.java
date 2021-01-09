@@ -2,8 +2,22 @@ package com.api.quackreport;
 
 public class EarthQuake {
     private String city;
-    private String date;
     private double magnitude;
+    private long timeinmilisec;
+
+    public EarthQuake(String city, double magnitude, long timeinmilisec) {
+        this.city = city;
+        this.magnitude = magnitude;
+        this.timeinmilisec = timeinmilisec;
+    }
+
+    public long getTimeinmilisec() {
+        return timeinmilisec;
+    }
+
+    public void setTimeinmilisec(long timeinmilisec) {
+        this.timeinmilisec = timeinmilisec;
+    }
 
     public String getCity() {
         return city;
@@ -11,14 +25,6 @@ public class EarthQuake {
 
     public void setCity(String city) {
         this.city = city;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
     }
 
     public double getMagnitude() {
@@ -29,9 +35,4 @@ public class EarthQuake {
         this.magnitude = magnitude;
     }
 
-    public EarthQuake(String city, String date, double magnitude) {
-        this.city = city;
-        this.date = date;
-        this.magnitude = magnitude;
-    }
 }

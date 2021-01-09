@@ -18,15 +18,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final ArrayList<EarthQuake> earthquakes = QueryList.extractEarthQuackes();
-//        earthquakes.add(new EarthQuake("London", "1/12/2020", 7.0));
-//        earthquakes.add(new EarthQuake("Tokyo", "1/12/2020", 7.0));
-//        earthquakes.add(new EarthQuake("Mexico City", "1/12/2020", 7.0));
-//        earthquakes.add(new EarthQuake("Rio de Janeiro", "1/12/2020", 7.0));
-//        earthquakes.add(new EarthQuake("London", "1/12/2020", 7.0));
-//        earthquakes.add(new EarthQuake("Rio de Janeiro", "1/12/2020", 7.0));
-//        earthquakes.add(new EarthQuake("Jammu", "1/12/2020", 7.0));
-//        earthquakes.add(new EarthQuake("Bariely", "1/12/2020", 7.0));
-//        earthquakes.add(new EarthQuake("Mexico City", "1/12/2020", 7.0));
 
         // Find a reference to the {@link ListView} in the layout
         ListView earthquakeListView = (ListView) findViewById(R.id.list);

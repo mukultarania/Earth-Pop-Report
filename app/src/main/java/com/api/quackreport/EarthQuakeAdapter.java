@@ -11,9 +11,26 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class EarthQuakeAdapter extends ArrayAdapter<EarthQuake> {
+    private static final String LOCATION_SEPARATOR = " of ";
+
+    //Function to COnvert Date and Time in UNIX format to Normal Format
+    private String formatDate(Date dateObject) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("LLL dd, yyyy");
+        return dateFormat.format(dateObject);
+    }
+
+    /**
+     * Return the formatted date string (i.e. "4:30 PM") from a Date object.
+     */
+    private String formatTime(Date dateObject) {
+        SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a");
+        return timeFormat.format(dateObject);
+    }
 
     @NonNull
     @Override
@@ -29,16 +46,36 @@ public class EarthQuakeAdapter extends ArrayAdapter<EarthQuake> {
         //Getting Position
         EarthQuake currentQuake = getItem(position);
 
-        TextView city = listItemView.findViewById(R.id.city);
+        TextView prim_loc = listItemView.findViewById(R.id.primary_loc);
+        TextView sec_loc = listItemView.findViewById(R.id.secondary_loc);
         TextView magnitude = listItemView.findViewById(R.id.magnitude);
         TextView date = listItemView.findViewById(R.id.date);
-        String c = currentQuake.getCity();
-        String d = currentQuake.getDate();
-        double m = currentQuake.getMagnitude();
+        TextView time = listItemView.findViewById(R.id.time);
+        Date dateObject = new Date(currentQuake.getTimeinmilisec());
 
-        city.setText(c);
+        String originalLocation = currentQuake.getCity();
+        String d = formatDate(dateObject);
+        double m = currentQuake.getMagnitude();
+        String formattedTime = formatTime(dateObject);
+        String primaryLocation;
+        String locationOffset;
+
+        //Function to Break Original string using LOCATION SEPARATOR
+        if (originalLocation.contains(LOCATION_SEPARATOR)) {
+            String[] parts = originalLocation.split(LOCATION_SEPARATOR);
+            locationOffset = parts[0] + LOCATION_SEPARATOR;
+            primaryLocation = parts[1];
+        } else {
+            locationOffset = getContext().getString(R.string.near_the);
+            primaryLocation = originalLocation;
+        }
+
+        //Setting Text to Text View
+        prim_loc.setText(primaryLocation);
+        sec_loc.setText(locationOffset);
         date.setText(d);
         magnitude.setText(""+m);
+        time.setText(formattedTime);
 
         return listItemView;
     }
