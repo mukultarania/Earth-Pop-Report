@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         final ArrayList<EarthQuake> earthquakes = QueryList.extractEarthQuackes();
 
+        earthquakes.add(new EarthQuake("Ghaziabad",  1l, 1589159401));
         // Find a reference to the {@link ListView} in the layout
         ListView earthquakeListView = (ListView) findViewById(R.id.list);
 

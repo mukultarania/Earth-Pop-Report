@@ -37,13 +37,12 @@ final public class QueryList {
                 JSONObject currentEarthquake = jsonArray.getJSONObject(i);
                 JSONObject propreties = currentEarthquake.getJSONObject("properties");
 
-                String date = propreties.getString("time");
                 String place = propreties.getString("place");
-                String magni = propreties.getString("mag");
+                Double magni = propreties.getDouble("mag");
                 long time = propreties.getLong("time");
 
                 //Creating Object of EarthQuake and adding that to the Array List
-                EarthQuake eq = new EarthQuake(place , Double.parseDouble(magni), time);
+                EarthQuake eq = new EarthQuake(place , magni , time);
                 earthquakes.add(eq);
             }
         } catch (Exception e){
