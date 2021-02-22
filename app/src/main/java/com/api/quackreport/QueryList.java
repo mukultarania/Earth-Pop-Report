@@ -40,9 +40,10 @@ final public class QueryList {
                 String place = propreties.getString("place");
                 Double magni = propreties.getDouble("mag");
                 long time = propreties.getLong("time");
+                String url = propreties.getString("url");
 
                 //Creating Object of EarthQuake and adding that to the Array List
-                EarthQuake eq = new EarthQuake(place , magni , time);
+                EarthQuake eq = new EarthQuake(place , magni , time, url);
                 earthquakes.add(eq);
             }
         } catch (Exception e){

@@ -4,11 +4,21 @@ public class EarthQuake {
     private String city;
     private double magnitude;
     private long timeinmilisec;
+    private String url;
 
-    public EarthQuake(String city, double magnitude, long timeinmilisec) {
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public EarthQuake(String city, double magnitude, long timeinmilisec, String url) {
         this.city = city;
         this.magnitude = magnitude;
         this.timeinmilisec = timeinmilisec;
+        this.url = url;
     }
 
     public long getTimeinmilisec() {
